@@ -1,0 +1,23 @@
+doctype html
+html
+	include ./partials/header.jade
+	.container
+			header(class='jumbotron')
+				h1 Welcome to YelpCamp!
+				p View our hand-picked campgrounds from all over!
+				a(class='btn btn-primary btn-large', href='/new') Add New Campground
+
+			.row.text-center(style='display:flex; flex-wrap: wrap')
+				-campgrounds.forEach(function(camp){
+					.col-md-3.col-sm-6
+						.thumbnail
+							img(src='#{camp.image}')
+							.caption
+								h4 #{camp.name}
+					
+				-})
+					
+
+		include ./partials/footer.jade
+
+
