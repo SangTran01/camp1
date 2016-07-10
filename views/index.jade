@@ -5,7 +5,7 @@ html
 			header(class='jumbotron')
 				h1 Welcome to YelpCamp!
 				p View our hand-picked campgrounds from all over!
-				a(class='btn btn-primary btn-large', href='/new') Add New Campground
+				a(class='btn btn-primary btn-large', href='/campgrounds/new') Add New Campground
 
 			.row.text-center(style='display:flex; flex-wrap: wrap')
 				-campgrounds.forEach(function(camp){
@@ -14,7 +14,8 @@ html
 							img(src='#{camp.image}')
 							.caption
 								h4 #{camp.name}
-					
+							p
+								a.btn.btn-primary(href='/campgrounds/' + camp._id) More Info
 				-})
 					
 
