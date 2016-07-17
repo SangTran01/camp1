@@ -1,0 +1,9 @@
+doctype html
+include ./partials/header.jade
+h1 Login!
+
+form(action='/login', method='POST')
+	input(type='text', placeholder='username', name='username')
+	input(type='password', placeholder='password', name='password')
+	button Login
+include ./partials/footer.jade

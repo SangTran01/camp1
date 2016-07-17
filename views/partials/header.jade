@@ -1,6 +1,7 @@
 head
 		title Yelp Camp
-		link(rel='stylesheet' href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css")
+		link(rel='stylesheet', type='text/css', href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css")
+		link(rel='stylesheet',type='text/css',href='/stylesheets/main.css')
 body
 	.navbar.navbar-default
 			.container-fluid
@@ -8,9 +9,17 @@ body
 					a.navbar-brand(href='/') YelpCamp
 				.collapse.navbar-collapse
 					ul.nav.navbar-nav.navbar-right
-						li
-							a(href='/') Login
-						li
-							a(href='/') Sign Up
-						li
-							a(href='/') Logout
+						-if(!currentUser){
+							li
+								a(href='/login') Login
+							li
+								a(href='/register') Sign Up
+						-} else {
+							li 
+								a(href='#') Welcome Back, #{currentUser.username}
+
+							li
+								a(href='/logout') Logout
+						-}
+						
+						
