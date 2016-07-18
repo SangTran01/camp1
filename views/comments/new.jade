@@ -8,9 +8,6 @@ html
 				form(action='/campgrounds/' + campground._id + '/comments', method='POST')
 					.form-group
 						input.form-control(type='text', name='text', placeholder='text')
-					
-					.form-group
-						input.form-control(type='text', name='author', placeholder='author')
 						
 					.form-group
 						button.btn.btn-large.btn-primary.btn-block(type='submit') Submit!
