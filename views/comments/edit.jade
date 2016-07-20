@@ -1,0 +1,17 @@
+doctype html
+html
+	include ../partials/header.jade
+	.container
+		.row
+			h1(style='text-align:center;') Edit Comment
+			div(style='width: 30%; margin: 0 auto;')
+				form(action='/campgrounds/' + campground_id + '/comments/' + comment._id + '?_method=PUT', method='POST')
+					.form-group
+						input.form-control(type='text', name='text', placeholder='comment here', value=comment.text)
+						
+					.form-group
+						button.btn.btn-large.btn-primary.btn-block(type='submit') Edit!
+
+				a(href='/campgrounds') Back to Campgrounds
+
+	include ../partials/footer.jade

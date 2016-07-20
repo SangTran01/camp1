@@ -7,7 +7,7 @@ html
 			div(style='width: 30%; margin: 0 auto;')
 				form(action='/campgrounds/' + campground._id + '/comments', method='POST')
 					.form-group
-						input.form-control(type='text', name='text', placeholder='text')
+						textarea.form-control(name='text', placeholder='Your comment here')
 						
 					.form-group
 						button.btn.btn-large.btn-primary.btn-block(type='submit') Submit!

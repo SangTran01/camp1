@@ -9,3 +9,11 @@
 .caption-full {
 	padding: 9px;
 }
+
+#delete-form {
+	display:inline;
+}
+
+.btn-danger {
+	margin-left:10px;
+}

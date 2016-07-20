@@ -1,6 +1,7 @@
 var express          		= require('express');
 var parser           		= require('body-parser');
 var mongoose         		= require('mongoose');
+var flash 					= require('connect-flash');
 var app              		= express();
 //add ./ when same directory as app.js
 var Campground      		= require('./models/campground');
@@ -10,7 +11,7 @@ var seedDB           		= require('./seeds');
 var passport 				= require('passport');
 var localStrategy 			= require('passport-local');
 var passportLocalMongoose 	= require('passport-local-mongoose'); 
-
+var methodOverride 			= require('method-override');
 //requiring routes
 var campgroundRoutes 		= require('./routes/campground');
 var commentRoutes 			= require('./routes/comment');
@@ -21,6 +22,8 @@ mongoose.connect('mongodb://localhost/yelp_camp');
 app.set('view engine', 'jade');
 app.use(express.static('public'));
 app.use(parser.urlencoded({extended:true}));
+app.use(methodOverride('_method'));
+app.use(flash());
 //seedDB();
 
 //Passport configuration
@@ -38,6 +41,8 @@ passport.deserializeUser(User.deserializeUser());
 app.use(function(req,res,next){
 	//locals let req.user be available to all routes
 	res.locals.currentUser = req.user;
+	res.locals.error = req.flash('error');
+	res.locals.success = req.flash('success');
 	next();
 });
 
