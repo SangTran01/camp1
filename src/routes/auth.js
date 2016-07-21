@@ -3,11 +3,22 @@ var router 		= express.Router();
 var passport 	= require('passport');
 var User 		= require('../models/user');
 var middleware 	= require('../middleware/index');
-
+var Campground = require('../models/campground');
 
 //ROUTES
 router.get('/',function(req,res){
-	res.render('landing');
+	Campground.find({}, 'image', function(err,foundCampgrounds){
+		if(err){
+			console.log(err);
+		} else {
+			var pictures = [];
+			for(var i = 0; i < foundCampgrounds.length; i++){
+				//console.log(foundCampgrounds[i].image);
+				pictures.push(foundCampgrounds[i].image);
+			}
+			res.render('landing', {pictures:pictures});
+		}
+	});
 });
 
 

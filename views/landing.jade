@@ -1,8 +1,17 @@
 doctype html
 html
 	include ./partials/header.jade
-	h1 landing page
+	
 
-	a(href='/campgrounds') view all campgrounds
+	#center.container(style='{color:#373a3c}')
+		h1#title YELP CAMP
+		h2
+			a#view(href='/campgrounds') View all campgrounds
+
+	script.
+
+		var stuff = ('#{pictures}').split(',');
+
+		$('body').backstretch(stuff, {fade: 750, duration: 4000});
 
 	include ./partials/footer.jade
